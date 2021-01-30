@@ -69,6 +69,9 @@ ds_longer <- ds_combined %>% pivot_longer(cols = c("Female", "Male"), names_to =
 total_words <- tibble(Film =  c("The Fellowship Of The Ring", "The Two Towers","The Return Of The King"),
                       Total = c(177277, 143436, 134462))
 
+ds_longer <- left_join(ds_longer, total_words, by = "Film")
+ds_longer$Percent <- (ds_longer$Words/ds_longer$Total)*100
+
 ### Question 6 ----------
 #The function below creates a graph to compare the words spoken by race/sex for a single film
 #The input for the function is a tibble that contains only a single film
