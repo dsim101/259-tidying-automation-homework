@@ -1,3 +1,4 @@
+# Deja Simon
 #PSYC 259 Homework 3 - Data Tidying and Automation
 #This assignment should be completed in RStudioCloud
 #For full credit, provide answers for at least 6/9 questions
@@ -6,7 +7,6 @@
 
 ### SETUP: RUN THIS BEFORE STARTING ----------
 
-install.packages("tidyverse") #If not installed
 #Load packages
 library(tidyverse)
 paths <- c("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Fellowship_Of_The_Ring.csv",
