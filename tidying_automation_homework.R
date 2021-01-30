@@ -84,6 +84,12 @@ words_graph <- function(df) {
   print(p)
 }
 
+for (i in length(ds_longer)) {
+  words_graph()
+}
+# not sure what to do for this one
+
+
 ### Question 7 ----------
 
 #Apply the words_graph function again, but this time
