@@ -28,7 +28,8 @@ ds_combined <- bind_rows(ds1, ds2, ds3)
 #Make your repository public and paste the link here:
 
 #ANSWER
-#YOUR GITHUB LINK: 
+#YOUR GITHUB LINK: https://github.com/dsim101/259-tidying-automation-homework
+
 
 ### Question 2 ---------- 
 
@@ -46,12 +47,14 @@ for (path in paths) {
   ds_loop <- bind_rows(ds_loop, temp_ds)
 }
 
+
 ### Question 3 ----------
 
 #Use map with paths to read in the data to a single tibble called ds_map
 #If you did this correctly, it should look the same as ds_combined created above
 
 ds_map <- map_dfr(paths, ~ read_csv(.x) %>% mutate(path = .x))
+
 
 ### Question 4 ----------
 
@@ -60,6 +63,7 @@ ds_map <- map_dfr(paths, ~ read_csv(.x) %>% mutate(path = .x))
 #Use ds_combined or one of the ones you created in Question 2 or 3, and save the output to ds_longer
 
 ds_longer <- ds_combined %>% pivot_longer(cols = c("Female", "Male"), names_to = "Sex", values_to = "Words")
+
 
 ### Question 5 ----------
 
@@ -71,6 +75,7 @@ total_words <- tibble(Film =  c("The Fellowship Of The Ring", "The Two Towers","
 
 ds_longer <- left_join(ds_longer, total_words, by = "Film")
 ds_longer$Percent <- (ds_longer$Words/ds_longer$Total)*100
+
 
 ### Question 6 ----------
 #The function below creates a graph to compare the words spoken by race/sex for a single film
@@ -95,6 +100,9 @@ for (i in length(ds_longer)) {
 #Apply the words_graph function again, but this time
 #use split and map to apply the function to each film separately
 
+# ?
+
+
 ### Question 8 ---------- 
 
 #The PI wants a .csv file for each film with a row for male and a row for female
@@ -102,7 +110,11 @@ for (i in length(ds_longer)) {
 #First, get the data formatted in the correct way
 #From ds_longer, create a new tibble "ds_wider" that has columns for words for each race and percentage for each race
 
+ds_wider <- pivot_wider(ds_longer, names_from = "Race", values_from = c("Words", "Percent"))
+
+
 ### Question 9 ---------
 
 #Using your new "ds_wider" tibble, write the three data files using either a for loop or map
 #The files should be written to "data_cleaned" and should be named by film title
+
