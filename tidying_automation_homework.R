@@ -59,6 +59,8 @@ ds_map <- map_dfr(paths, ~ read_csv(.x) %>% mutate(path = .x))
 #Use pivot_longer to reshape the data so that sex is a column with values male/female and words is a column
 #Use ds_combined or one of the ones you created in Question 2 or 3, and save the output to ds_longer
 
+ds_longer <- ds_combined %>% pivot_longer(cols = c("Female", "Male"), names_to = "Sex", values_to = "Words")
+
 ### Question 5 ----------
 
 #It's helpful to know how many words were spoken, but each book was a different length
